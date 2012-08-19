@@ -1,9 +1,10 @@
-# python3 is required!
+#!/usr/bin/env python3
 
-def put_anki():
-
-	file = input('PATH TO FILE: ')
-	tag = input('TAG: ')
+def put_anki(file, tag):
+	"""
+	if the file does not exit, it will be created
+	inputed values will be saved in the file in the form: front; back; tag
+	"""
 	
 	f = open(file, 'a')		
 	try:
@@ -11,10 +12,17 @@ def put_anki():
 			front = input('FRONT: ')
 			if not front: break
 			back = input('BACK: ')
-			f.write(front + ', ' + back + ', ' + tag + '\n')
+			f.write(front + '; ' + back + '; ' + tag + '\n')
 			print('ok')
 	finally:
 		f.close() 
 
 if __name__ == '__main__':
-	put_anki()
+	print('DO NOT USE \';\'!')
+	
+	file = input('PATH TO FILE: ')
+	tag = input('TAG: ')
+	
+	put_anki(file, tag)
+	
+
